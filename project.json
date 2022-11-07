@@ -1,0 +1,100 @@
+{
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"equation" : 
+			{
+				"index" : 2,
+				"options" : 
+				[
+					{
+						"label" : "+",
+						"value" : "+"
+					},
+					{
+						"label" : "-",
+						"value" : "-"
+					},
+					{
+						"label" : "x",
+						"value" : "x"
+					}
+				],
+				"order" : 102,
+				"text" : "Equation",
+				"type" : "combo",
+				"value" : "+"
+			},
+			"fontsize" : 
+			{
+				"fraction" : false,
+				"index" : 3,
+				"max" : 100,
+				"min" : 1,
+				"order" : 103,
+				"text" : "Font size",
+				"type" : "slider",
+				"value" : 25
+			},
+			"movementspeed" : 
+			{
+				"fraction" : false,
+				"index" : 5,
+				"max" : 100,
+				"min" : 0,
+				"order" : 105,
+				"text" : "Movement speed",
+				"type" : "slider",
+				"value" : 1
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			},
+			"slider1" : 
+			{
+				"fraction" : false,
+				"index" : 0,
+				"max" : 100,
+				"min" : 1,
+				"order" : 100,
+				"text" : "Choose your first number",
+				"type" : "slider",
+				"value" : 1
+			},
+			"slider2" : 
+			{
+				"fraction" : false,
+				"index" : 1,
+				"max" : 100,
+				"min" : 1,
+				"order" : 101,
+				"text" : "Choose your second number",
+				"type" : "slider",
+				"value" : 1
+			},
+			"spinspeed" : 
+			{
+				"fraction" : false,
+				"index" : 4,
+				"max" : 100,
+				"min" : 0,
+				"order" : 104,
+				"text" : "Spin speed",
+				"type" : "slider",
+				"value" : 1
+			}
+		}
+	},
+	"preview" : "preview.jpg",
+	"snapshotformat" : -1,
+	"snapshotoverlay" : "",
+	"title" : "Calculus!",
+	"type" : "web",
+	"version" : 1
+}

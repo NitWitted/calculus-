@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javashit</title>
+  <style>
+    *{
+      background-color: rgb(34, 34, 34);
+      color: rgb(216, 216, 216);
+      margin: 0;
+      padding: 0;
+    }
+
+    body{
+      display: inline-block;
+      height: 100px;
+      width: 200px;
+      overflow: hidden;
+    }
+
+    .spin{
+      text-align: center;
+      animation-name: spin;
+      animation-duration: 750ms;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear; 
+    }
+
+    @keyframes spin {
+      from {
+        transform:rotate(0deg);
+      } to {
+        transform:rotate(360deg);
+      }
+    }
+
+    .x {
+      animation: x 13s linear infinite alternate;
+    }
+
+    .y {
+      animation: y 7s linear infinite alternate;
+    }
+
+    @keyframes x {
+      100% {
+          transform: translateX( calc(99vw - 100px) );
+      }
+    }
+
+    @keyframes y {
+      100% {
+          transform: translateY( calc(99vh - 50px) );
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="x">
+    <div class="y">
+      <div class="spin">
+        <h1 id="h1">Calculus!</h1>
+        <h3 id="calc"></h3>
+      </div>
+    </div>
+  </div>
+  <script>
+    var text1 = 1;
+    var text2 = 2;
+    var span1 = document.getElementById("h1");
+    var span2 = document.getElementById("calc");
+    var size = 25;
+
+    function suckDeezNuts(text1, text2){
+      document.getElementById("calc").innerText = text1 + text2;
+    };
+
+    function bigBoiFonto(span1, span2, size){
+      let sizeText = size.toString();
+      span1.style.fontSize = sizeText + "px";
+      span2.style.fontSize = sizeText + "px";
+    };
+
+    window.wallpaperPropertyListener = {
+      applyUserProperties: function(properties){
+        if(properties.slider1){
+          text1 = properties.slider1.value;
+          suckDeezNuts(text1, text2);
+        }
+        if(properties.slider2){
+          text2 = properties.slider2.value;
+          suckDeezNuts(text1, text2);
+        }
+        if(properties.fontsize){
+          size = properties.fontsize.value;
+          bigBoiFonto(span1, span2, size);
+        }
+      }
+   }
+  </script>
+</body>
+</html>
