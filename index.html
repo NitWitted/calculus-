@@ -15,8 +15,8 @@
 
     body{
       display: inline-block;
-      height: 100px;
-      width: 200px;
+      height: min-content;
+      width: min-content;
       overflow: hidden;
     }
 
@@ -37,11 +37,11 @@
     }
 
     .x {
-      animation: x 13s linear infinite alternate;
+      animation: x 14s linear infinite alternate;
     }
 
     .y {
-      animation: y 7s linear infinite alternate;
+      animation: y 8s linear infinite alternate;
     }
 
     @keyframes x {
@@ -58,9 +58,9 @@
   </style>
 </head>
 <body>
-  <div class="x">
-    <div class="y">
-      <div class="spin">
+  <div class="x" id="moveX" style="animation-duration: 14s">
+    <div class="y" id="moveY" style="animation-duration: 8s">
+      <div class="spin" id="spoon" style="animation-duration: 750ms;">
         <h1 id="h1">Calculus!</h1>
         <h3 id="calc"></h3>
       </div>
@@ -72,6 +72,11 @@
     var span1 = document.getElementById("h1");
     var span2 = document.getElementById("calc");
     var size = 25;
+    var spinSpeedSlider = 50;
+    var spinSpeed = 300;
+    var moveSpeedSlider = 50;
+    var moveSpeedX = 2.8;
+    var moveSpeedY = 0.8;
 
     function suckDeezNuts(text1, text2){
       document.getElementById("calc").innerText = text1 + text2;
@@ -82,6 +87,20 @@
       span1.style.fontSize = sizeText + "px";
       span2.style.fontSize = sizeText + "px";
     };
+
+    function spinno(spinSpeedSlider, spinSpeed){
+      spinSpeedSlider /= 10;
+      spinSpeed *= spinSpeedSlider;
+      document.getElementById("spinno").style.animationDuration = spinspeed + "ms";
+    };
+
+    function movementStuffo(moveSpeedSlider, movespeedX, movespeedY){
+      moveSpeedSlider /= 10;
+      moveSpeedX *= moveSpeedSlider;
+      moveSpeedY *= moveSpeedSlider;
+      document.getElementById("moveX").style.animationDuration = movespeedX + "s";
+      document.getElementById("moveY").style.animationDuration = movespeedY + "s";
+    }
 
     window.wallpaperPropertyListener = {
       applyUserProperties: function(properties){
@@ -96,6 +115,14 @@
         if(properties.fontsize){
           size = properties.fontsize.value;
           bigBoiFonto(span1, span2, size);
+        }
+        if(properties.spinspeed){
+          spinSpeedSlider = properties.spinspeed.value;
+          spinno(spinSpeedSlider, spinSpeed)
+        }
+        if(properties.movementspeed){
+          movespeedSlider = properties.movementspeed.value;
+          movementStuffo(moveSpeedSlider, movespeedX, movespeedY)
         }
       }
    }
