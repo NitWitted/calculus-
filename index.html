@@ -72,14 +72,30 @@
     var span1 = document.getElementById("h1");
     var span2 = document.getElementById("calc");
     var size = 25;
+    var equationType = 1;
     var spinSpeedSlider = 50;
     var spinSpeed = 300;
-    var moveSpeedSlider = 50;
-    var moveSpeedX = 2.8;
-    var moveSpeedY = 0.8;
+    var moveSpeedSlider = 5;
+    var moveSpeedX = 1.4;
+    var moveSpeedY = 0.4;
 
-    function suckDeezNuts(text1, text2){
-      document.getElementById("calc").innerText = text1 + text2;
+    function equationLogic(text1, text2, equationType){
+      if(equationType == 1){
+        document.getElementById("calc").innerText = text1 + text2;
+      }
+      else if(equationType == 2){
+        document.getElementById("calc").innerText = text1 - text2;
+      }
+      else if(equationType == 3){
+        document.getElementById("calc").innerText = text1 * text2;
+      }
+      else if(equationType == 4){
+        decimalHell = text1 / text2;
+        document.getElementById("calc").innerText = decimalHell.toFixed(2);
+      }
+      else{
+        document.getElementById("calc").innerText = "Equation error";
+      }
     };
 
     function bigBoiFonto(span1, span2, size){
@@ -89,28 +105,33 @@
     };
 
     function spinno(spinSpeedSlider, spinSpeed){
-      spinSpeedSlider /= 10;
-      spinSpeed *= spinSpeedSlider;
-      document.getElementById("spinno").style.animationDuration = spinspeed + "ms";
+      spinSpeed = spinSpeedSlider * 300;
+      let spinSpeedText = spinSpeed.toString()
+      document.getElementById("spoon").style.animationDuration = spinSpeedText + "ms";
     };
 
-    function movementStuffo(moveSpeedSlider, movespeedX, movespeedY){
-      moveSpeedSlider /= 10;
-      moveSpeedX *= moveSpeedSlider;
-      moveSpeedY *= moveSpeedSlider;
-      document.getElementById("moveX").style.animationDuration = movespeedX + "s";
-      document.getElementById("moveY").style.animationDuration = movespeedY + "s";
-    }
+    function movementStuffo(moveSpeedSlider, moveSpeedX, moveSpeedY){
+      moveSpeedX = moveSpeedSlider / 1.4;
+      moveSpeedY = moveSpeedSlider / 0.4;
+      let moveSpeedXText = moveSpeedX.toString()
+      let moveSpeedYText = moveSpeedY.toString()
+      document.getElementById("moveX").style.animationDuration = moveSpeedXText + "s";
+      document.getElementById("moveY").style.animationDuration = moveSpeedYText + "s";
+    };
 
     window.wallpaperPropertyListener = {
       applyUserProperties: function(properties){
         if(properties.slider1){
           text1 = properties.slider1.value;
-          suckDeezNuts(text1, text2);
+          equationLogic(text1, text2, equationType);
         }
         if(properties.slider2){
           text2 = properties.slider2.value;
-          suckDeezNuts(text1, text2);
+          equationLogic(text1, text2, equationType);
+        }
+        if(properties.equation){
+          equationType = properties.equation.value;
+          equationLogic(text1, text2, equationType);
         }
         if(properties.fontsize){
           size = properties.fontsize.value;
@@ -121,8 +142,8 @@
           spinno(spinSpeedSlider, spinSpeed)
         }
         if(properties.movementspeed){
-          movespeedSlider = properties.movementspeed.value;
-          movementStuffo(moveSpeedSlider, movespeedX, movespeedY)
+          moveSpeedSlider = properties.movementspeed.value;
+          movementStuffo(moveSpeedSlider, moveSpeedX, moveSpeedY)
         }
       }
    }
